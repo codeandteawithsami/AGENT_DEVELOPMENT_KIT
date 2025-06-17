@@ -1,10 +1,11 @@
-from google.adk.agents import Agent 
+from google.adk.agents import Agent
 from google.adk.tools.tool_context import ToolContext
 
+
 def get_nerd_joke(topic: str, tool_context: ToolContext) -> dict:
-    """Get a nerdy joke about specific topic."""
-    print(f"---Tool: get_nerd_joke called for topic: {topic} ---")
-    
+    """Get a nerdy joke about a specific topic."""
+    print(f"--- Tool: get_nerd_joke called for topic: {topic} ---")
+
     # Example jokes - in a real implementation, you might want to use an API
     jokes = {
         "python": "Why don't Python programmers like to use inheritance? Because they don't like to inherit anything!",
@@ -17,13 +18,14 @@ def get_nerd_joke(topic: str, tool_context: ToolContext) -> dict:
         "biology": "Why did the cell go to therapy? Because it had too many issues!",
         "default": "Why did the computer go to the doctor? Because it had a virus!",
     }
-    
+
     joke = jokes.get(topic.lower(), jokes["default"])
-        
+
     # Update state with the last joke topic
     tool_context.state["last_joke_topic"] = topic
-    
+
     return {"status": "success", "joke": joke, "topic": topic}
+
 
 # Create the funny nerd agent
 funny_nerd = Agent(

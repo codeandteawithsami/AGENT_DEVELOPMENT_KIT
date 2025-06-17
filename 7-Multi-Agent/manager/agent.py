@@ -1,7 +1,12 @@
 from google.adk.agents import Agent
-from google.adk.tools.agent_tool import AgentTool 
+from google.adk.tools.agent_tool import AgentTool
 
-root_agent =  Agent(
+from .sub_agents.funny_nerd.agent import funny_nerd
+from .sub_agents.news_analyst.agent import news_analyst
+from .sub_agents.stock_analyst.agent import stock_analyst
+from .tools.tools import get_current_item
+
+root_agent = Agent(
     name="manager",
     model="gemini-2.0-flash",
     description="Manager agent",
@@ -19,8 +24,9 @@ root_agent =  Agent(
     - news_analyst
     - get_current_time
     """,
-    # sub_agents=[stock_analyst, funny_nerd],
-    # tools=[AgentTool(news_analyst),
-    #        get_current_time,
-    #        ],
+    sub_agents=[stock_analyst, funny_nerd],
+    tools=[
+        AgentTool(news_analyst),
+        get_current_item,
+    ],
 )
