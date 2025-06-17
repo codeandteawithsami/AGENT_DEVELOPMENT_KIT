@@ -3,12 +3,14 @@ from datetime import datetime
 from google.adk.agents import Agent
 from google.adk.tools.tool_context import ToolContext
 
+
 def get_current_time() -> dict:
     """Get the current time in the format YYYY-MM-DD HH:MM:SS"""
     return {
         "current_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
-    
+
+
 def refund_course(tool_context: ToolContext) -> dict:
     """
     Simulates refunding the AI Marketing Platform course.

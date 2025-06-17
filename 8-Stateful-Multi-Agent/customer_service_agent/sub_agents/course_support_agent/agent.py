@@ -1,4 +1,4 @@
-from google.adk.agents import Agent 
+from google.adk.agents import Agent
 
 # Create the course support agent
 course_support_agent = Agent(
@@ -12,11 +12,11 @@ course_support_agent = Agent(
     <user_info>
     Name: {user_name}
     </user_info>
-    
+
     <purchase_info>
     Purchased Courses: {purchased_courses}
     </purchase_info>
-    
+
     Before helping:
     - Check if the user owns the AI Marketing Platform course
     - Course information is stored as objects with "id" and "purchase_date" properties
